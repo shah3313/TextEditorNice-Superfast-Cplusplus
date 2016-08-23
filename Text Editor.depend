@@ -1407,3 +1407,6 @@
 
 1412507950 c:\wxwidgets\wxwidgets-3.0.2\include\wx\msw\filedlg.h
 
+1471986889 source:c:\github\text-editor-nice-superfast\resource.rc
+	"wx/msw/wx.rc"
+

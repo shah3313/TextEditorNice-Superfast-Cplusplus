@@ -5,11 +5,8 @@
 
 class fileOpen
 {
-    int file=0;
    public:
-       fileOpen();
        void setFileOpened(std::string toWrite, std::string fileName);
-       ~fileOpen();
        std::string readFile(std::string fileName);
 };
 

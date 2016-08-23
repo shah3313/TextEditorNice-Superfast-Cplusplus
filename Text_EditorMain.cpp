@@ -133,25 +133,26 @@ Text_EditorFrame::~Text_EditorFrame()
     //*)
 }
 
-void Text_EditorFrame::OnQuit(wxCommandEvent& event)
-{
-    Close();
-}
+//---------------------------------------------------------------------------------------------------------------//
 
-void Text_EditorFrame::OnAbout(wxCommandEvent& event)
-{
-    wxString msg = wxbuildinfo(long_f);
-    wxMessageBox(msg, _("Welcome to..."));
-}
+// Close program
+void Text_EditorFrame::OnQuit(wxCommandEvent& event) { Close(); }
 
+// Show credits
+void Text_EditorFrame::OnMenuCreditsSelected(wxCommandEvent& event) { wxMessageBox("This program is made by Lorenzo Campanile", ":)", wxOK); }
+
+// Set welcome
+void Text_EditorFrame::OnAbout(wxCommandEvent& event) { wxString msg = wxbuildinfo(long_f); wxMessageBox(msg, _("Welcome to a nice Text Editor!!")); }
+
+// Instruction of save button
 void Text_EditorFrame::OnToggleButton1Toggle(wxCommandEvent& event)
 {
      int result; // Variable for the result of file dialog
      result = FileDialog1->ShowModal(); // Show the File dialog and put the result in the variable
-     if (result==wxID_OK)  // If press ok..
+     if (result == wxID_OK)  // If press ok..
      {
          wxString directoryFile = FileDialog1->GetPath(); // Save the path
-         wxString wxText=TextCtrl1->GetValue();  // Save the text
+         wxString wxText = TextCtrl1->GetValue();  // Save the text
          std::string text = wxText.ToStdString(); // Convert the text of framework in a standard string
          std::string directory = directoryFile.ToStdString(); // Convert the text of the directory in a standard string
          fileOpen *f1 = new fileOpen(); // Create an istance of fileOpen (See fileHandle.h and fileHandle.cpp)
@@ -177,12 +178,14 @@ void Text_EditorFrame::OnMenuSaveSelected(wxCommandEvent& event)
      }
 }
 
+// Set the empty paper
 void Text_EditorFrame::OnButton1Click(wxCommandEvent& event)
 {
     wxString nothing = ""; // Empty string
     TextCtrl1->SetValue(nothing); // Set the empty string
 }
 
+// Open a file
 void Text_EditorFrame::OnMenuOpenSelected(wxCommandEvent& event)
 {
     int result; // Variable for the result of file dialog
@@ -199,7 +202,4 @@ void Text_EditorFrame::OnMenuOpenSelected(wxCommandEvent& event)
     }
 }
 
-void Text_EditorFrame::OnMenuCreditsSelected(wxCommandEvent& event)
-{
-    wxMessageBox("This program is made by Lorenzo Campanile", ":)", wxOK);
-}
+
